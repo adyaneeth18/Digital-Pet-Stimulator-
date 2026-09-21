@@ -9,7 +9,7 @@ int main()
     char name[20];
 
     printf("================================\n");
-    printf("          MY LITTLE PLANT\n");
+    printf("        🌱  MY LITTLE PLANT 🌱\n");
     printf("================================\n");
 
     printf("Enter plant name: ");
