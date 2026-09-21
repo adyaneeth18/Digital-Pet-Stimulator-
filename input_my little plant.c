@@ -32,7 +32,7 @@ Enter choice: 2
 
 Ava enjoyed the sunlight!
 
-What do you want to select?.
+What you want to select?.
 
 1. Go to Day 2
 
