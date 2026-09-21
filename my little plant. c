@@ -1,0 +1,156 @@
+#include <stdio.h>
+
+int main()
+{
+    int choice;
+    int next;
+    int energy = 50, happiness = 50;
+    int health = 50, score = 0, day = 1;
+    char name[20];
+
+    printf("================================\n");
+    printf("          MY LITTLE PLANT\n");
+    printf("================================\n");
+
+    printf("Enter plant name: ");
+    scanf("%19s", name);
+
+    do
+    {
+        printf("\n================================\n");
+        printf("Day %d | %s\n", day, name);
+        printf("================================\n");
+
+        printf("Energy: %d  Happiness: %d\n", energy, happiness);
+        printf("Health: %d   Score: %d\n", health, score);
+
+        printf("\n1. Water\n");
+        printf("2. Sunlight\n");
+        printf("3. Feed\n");
+        printf("4. Play\n");
+        printf("5. Check Status\n");
+        printf("6. Exit\n");
+
+        printf("\nEnter choice: ");
+        scanf("%d", &choice);
+
+        switch(choice)
+        {
+            case 1:
+                health += 10;
+                energy += 5;
+                score += 5;
+
+                printf("\nYou watered %s!\n", name);
+                break;
+
+            case 2:
+                health += 5;
+                energy += 10;
+                happiness += 5;
+                score += 5;
+
+                printf("\n%s enjoyed the sunlight!\n", name);
+                break;
+
+            case 3:
+                health += 10;
+                energy += 5;
+                score += 10;
+
+                printf("\nYou fed %s!\n", name);
+                break;
+
+            case 4:
+                happiness += 10;
+                energy -= 5;
+                score += 10;
+
+                printf("\nYou played with %s!\n", name);
+                break;
+
+            case 5:
+                printf("\n----------- STATUS -----------\n");
+                printf("Energy: %d\n", energy);
+                printf("Happiness: %d\n", happiness);
+                printf("Health: %d\n", health);
+                printf("Score: %d\n", score);
+
+                if(health >= 70 && happiness >= 70)
+                {
+                    printf("Status: HEALTHY\n");
+                }
+                else if(health >= 40 && happiness >= 40)
+                {
+                    printf("Status: NEEDS CARE\n");
+                }
+                else
+                {
+                    printf("Status: NEEDS ATTENTION\n");
+                }
+                break;
+
+            case 6:
+                printf("\nGoodbye, %s!\n", name);
+                printf("Final Score: %d\n", score);
+                break;
+
+            default:
+                printf("\nInvalid choice!\n");
+        }
+
+        /* Keep values between 0 and 100 */
+        if(energy > 100)
+            energy = 100;
+
+        if(happiness > 100)
+            happiness = 100;
+
+        if(health > 100)
+            health = 100;
+
+        if(energy < 0)
+            energy = 0;
+
+        if(happiness < 0)
+            happiness = 0;
+
+        if(health < 0)
+            health = 0;
+
+
+        /* Ask about the next day after an action */
+        if(choice >= 1 && choice <= 4)
+        {
+            printf("\nWhat do you want to do?\n");
+            printf("1. Go to Day %d\n", day + 1);
+            printf("2. Play Day %d again\n", day);
+            printf("3. Exit\n");
+
+            printf("\nEnter choice: ");
+            scanf("%d", &next);
+
+            if(next == 1)
+            {
+                day++;
+            }
+            else if(next == 3)
+            {
+                printf("\nGoodbye, %s!\n", name);
+                printf("Final Score: %d\n", score);
+                choice = 6;
+            }
+            else if(next == 2)
+            {
+                printf("\nPlaying Day %d again...\n", day);
+            }
+            else
+            {
+                printf("\nInvalid choice. Staying on Day %d.\n", day);
+            }
+        }
+
+    } while(choice != 6);
+
+    return 0;
+}
