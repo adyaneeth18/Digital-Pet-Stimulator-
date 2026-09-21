@@ -1,5 +1,5 @@
 ================================
-MY LITTLE PLANT
+🌱 MY LITTLE PLANT 🌱
 
 Enter plant name: Ava
 
